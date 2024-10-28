@@ -9,6 +9,8 @@ public record NonEmpty(BSTree left, Integer data, BSTree right) implements BSTre
         }
         else if (toAdd > this.data) {
             return new NonEmpty(left, data, right.insert(toAdd));
+        } else {
+            // todo (exception for dup keys)
         }
         return null;
     }
