@@ -1,6 +1,9 @@
 package edu.psu.ist;
 
-public record NonEmpty(BSTree left, Integer data, BSTree right) implements BSTree {
+public record NonEmpty(
+        BSTree left,
+        Integer data,
+        BSTree right) implements BSTree {
 
     @Override public BSTree insert(Integer toAdd) {
         if (toAdd < this.data) {
@@ -9,14 +12,23 @@ public record NonEmpty(BSTree left, Integer data, BSTree right) implements BSTre
         }
         else if (toAdd > this.data) {
             return new NonEmpty(left, data, right.insert(toAdd));
-        } else {
-            // todo (exception for dup keys)
         }
-        return null;
+        else { // toAdd == this.data
+            throw new IllegalArgumentException("dup key");
+        }
     }
 
     @Override public String preOrder() {
-        return "";
+
+        String result = data + "";
+        // next: does the left subtree have any kids?
+        if (left.size() != 0) {
+            result += " " + left.preOrder();
+        }
+        if (right.size() != 0) {
+            result += " " + right.preOrder();
+        }
+        return result;
     }
 
     @Override public int size() {

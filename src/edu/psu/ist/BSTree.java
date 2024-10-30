@@ -2,8 +2,10 @@ package edu.psu.ist;
 
 public interface BSTree {
 
-    // static factory method
-    static BSTree empty() { throw new UnsupportedOperationException("not done"); }
+    // "static factory"
+    static BSTree empty() {
+        return new Empty();
+    }
 
     /** Inserts {@code item} into the binary search tree. */
     BSTree insert(Integer toAdd);
@@ -11,8 +13,8 @@ public interface BSTree {
     String preOrder();
 
     //String inOrder();
-
     //String postOrder();
 
+    /** returns the number of nodes in {@code this} tree */
     int size();
 }
