@@ -40,4 +40,42 @@ public final class Exercises {
                 .insert(39);
         System.out.println(hello(exampleBst));
     }
+
+    public static int sumAll(BSTree t) {
+        return switch(t) {
+            case Empty e -> 0;
+            case NonEmpty(BSTree left, Integer d, BSTree right) -> {
+                yield d + sumAll(left) + sumAll(right);
+            }
+        };
+    }
+
+
+    // example of switch expression
+    public static String guessingGame(int n) {
+        // switch EXPRESSION
+        // not statement
+        // that's why there's 0s
+        String result = switch(n) {
+            case 5 -> "congrats";
+            default -> "WRONG";
+        };
+
+//        int x = 5;
+//        x = x + switch(x) {
+//            case 5 -> 5;
+//            case 6 -> 2;
+//            default -> 0;
+//        };
+//
+//
+//        if else implementation
+//        if(n == 5) {
+//            return "congrats!";
+//        }
+//        else {
+//            return "WRONG";
+//        }
+        return result;
+    }
 }
